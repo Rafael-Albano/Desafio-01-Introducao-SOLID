@@ -1,0 +1,213 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Challenger Documenting with Swagger",
+        "description": "Documenting application using Swagger",
+        "version": "1.0.0",
+        "contact": {
+            "email": "rafael.albano88@gmail.com"
+        }
+    }, 
+    "paths": {
+        "/users":{
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create new users",
+                "description": "Create new users pasing body parameters name and email",
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "John Doe",
+                                    "email": "john.doe@example.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "404": {
+                        "description": "User Already Exists"
+                    }
+                }
+            },
+
+            "get": {
+                "tags": ["Users"],
+                "summary": "List all Users",
+                "description": "List all users if the user is an admin.",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "user_id",
+                        "description": "Identificator unique the of user",
+                        "schema": {
+                            "format": "uuid",
+                            "type":"string"
+                        },
+                        "required": true  
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type" : "string",
+                                                "format": "uuid"   
+                                            },
+                                            "admin": {
+                                                "type": "boolean",
+                                                "example": false   
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Mc Giver"   
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "mc.giver@example.com"   
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time" 
+
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        }
+                                    }
+                                         
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                }
+                
+
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Returns a user by ID",
+                "description": "Return a user by ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Identificator unique the of user",
+                        "schema": {
+                            "format": "uuid",
+                            "type":"string"
+                        },
+                        "required": true  
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type" : "string",
+                                            "format": "uuid"   
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false   
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Mc Giver"   
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "mc.giver@example.com"   
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time" 
+
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                    
+                                         
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not Exists"
+                    }
+                }
+                
+
+            }
+        },
+        "/users/{user_id}/admin":{
+            "patch": {
+                "tags": ["Users"],
+                "summary": "Create new users",
+                "description": "Create new users pasing body parameters name and email",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Identificator unique the of user",
+                        "schema": {
+                            "format": "uuid",
+                            "type":"string"
+                        },
+                        "required": true  
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "404": {
+                        "description": "User not Exists"
+                    }
+                }
+            }
+        }
+    }
+   
+    
+    
+    
+    
+}

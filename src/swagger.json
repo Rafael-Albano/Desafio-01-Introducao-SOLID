@@ -37,7 +37,43 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type" : "string",
+                                            "format": "uuid"   
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false   
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Mc Giver"   
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "mc.giver@example.com"   
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time" 
+
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                    
+                                         
+                                }
+                            }
+                        }
                     },
                     "404": {
                         "description": "User Already Exists"
@@ -134,7 +170,6 @@
                         "content": {
                             "application/json":{
                                 "schema": {
-                                    
                                     "type": "object",
                                     "properties": {
                                         "id": {
@@ -196,7 +231,43 @@
                 ], 
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type" : "string",
+                                            "format": "uuid"   
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false   
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Mc Giver"   
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "mc.giver@example.com"   
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time" 
+
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                    
+                                         
+                                }
+                            }
+                        }
                     },
                     "404": {
                         "description": "User not Exists"
